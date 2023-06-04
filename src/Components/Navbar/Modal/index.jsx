@@ -2,11 +2,11 @@ import React from "react";
 import { Wrapper } from "./style";
 import { Avatar, Modal } from "antd";
 
-const ModalSettings = () => {
+const ModalSettings = ({ active }) => {
   return (
     <Modal
       title="Profile"
-      open={true}
+      open={active}
       okText={"Save"}
       okButtonProps={{ disabled: true }}>
       <Wrapper>

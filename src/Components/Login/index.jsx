@@ -1,47 +1,58 @@
 import { useRef, useState } from "react";
 import { Wrapper } from "./style";
-import { notification } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-import axios from "axios";
+import useNotificationAPI from "../Generic/NotificationAPI";
+import useAxios from "../../hooks/useAxios";
+import { useSignIn } from "react-auth-kit";
+import { useNavigate } from "react-router-dom";
+
 const Login = () => {
+  const navigate = useNavigate();
+  const notifier = useNotificationAPI();
+  const axios = useAxios();
+  const signIn = useSignIn();
   const [loading, setLoading] = useState(false);
   const phoneRef = useRef();
   const passwordRef = useRef();
-
   const keyDetect = (e) => {
-    if (loading) return;
-    if (e.key === "Enter" || e.key === 13 || e.type === "click")
-      return onAuth();
+    if (loading) return; // stop
+    if (e.key === "Enter" || e.type === "click") return onAuth();
   };
   const onAuth = () => {
-    const { phoneNumber, password } = {
-      password: passwordRef.current.input.value,
-      phoneNumber: phoneRef.current.input.value,
-    };
-    if (!password || !phoneNumber)
-      return notification.error({ message: "Please fill all fields" });
+    const password = passwordRef.current.input.value;
+    const phoneNumber = `+998${phoneRef.current.input.value}`;
+
+    if (!password || !phoneNumber) return notifier("empty");
     setLoading(true);
+
     axios({
-      url: `${process.env.REACT_APP_MAIN_URL}/user/sign-in`,
+      url: `/user/sign-in`,
       method: "POST",
-      data: {
-        phoneNumber: `+998${phoneNumber}`,
+      body: {
+        phoneNumber,
         password,
       },
     })
-      .then(({ data }) => {
-        setLoading(false);
-        const { token, user } = data.data;
-        localStorage.setItem("token", token);
-        notification.success({ message: "Succesfully signed in" });
-      })
-      .catch(({ response }) => {
-        setLoading(false);
-        if (response.status === 409)
-          notification.error({
-            message: "User not found",
-            description: "Phone number or password incorrect",
+      .then(
+        ({
+          data: {
+            data: { token, user },
+          },
+        }) => {
+          setLoading(false);
+          localStorage.setItem("token", token);
+          signIn({
+            token,
+            expiresIn: 3600,
+            tokenType: "Bearer",
+            authState: user,
           });
+          navigate("/");
+        }
+      )
+      .catch(({ response: { status } }) => {
+        notifier(status);
+        setLoading(false);
       });
   };
   return (
