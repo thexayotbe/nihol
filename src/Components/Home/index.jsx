@@ -18,17 +18,17 @@ const Home = () => {
           return (
             <Card
               key={id}
-              title={title}
+              title={t(title)}
               icon={icon}
               onClick={() => navigateHandler(path)}
             />
           );
         })}
       </CardsSection>
-      <TitleHandler title={"Reports:"} showBackIcon={false} />
+      <TitleHandler title={t("home_report_title")} showBackIcon={false} />
       <CardsSection>
         <Card
-          title={"Report"}
+          title={t("home_report")}
           icon={report}
           onClick={() => navigate("/report")}
         />

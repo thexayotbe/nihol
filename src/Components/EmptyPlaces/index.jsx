@@ -9,16 +9,17 @@ const EmptyPlaces = () => {
   const { pathname } = useLocation();
   const hasOutlet = useOutlet();
   const navigate = useNavigate();
-  const navigateHandler = (path) => navigate(`  ${pathname}${path}`);
+  const navigateHandler = (path) => navigate(`${pathname}${path}`);
   return !hasOutlet ? (
     <Content>
       <TitleHandler title={"EmptyPlaces"} />
       <CardsSection>
-        {emptyPlacesCardData.map(({ id, title, path }) => {
+        {emptyPlacesCardData.map(({ id, title, path, icon }) => {
           return (
             <Card
               key={id}
               title={title}
+              icon={icon}
               onClick={() => navigateHandler(path)}
             />
           );

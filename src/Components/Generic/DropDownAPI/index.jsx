@@ -5,7 +5,10 @@ import {
   TranslationOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 export const useDropDownApi = () => {
+  const { t } = useTranslation();
+
   return {
     navbarDropDownItems: ({ settingClickHandler, localeClickHandler }) => {
       return [
@@ -13,7 +16,7 @@ export const useDropDownApi = () => {
           label: (
             <DropDownItem onClick={settingClickHandler}>
               <SettingOutlined />
-              <DropDownLabel>Setting</DropDownLabel>
+              <DropDownLabel>{t("setting")}</DropDownLabel>
             </DropDownItem>
           ),
           key: "0",
@@ -22,7 +25,7 @@ export const useDropDownApi = () => {
           label: (
             <DropDownItem onClick={localeClickHandler}>
               <TranslationOutlined />
-              <DropDownLabel>Change language</DropDownLabel>
+              <DropDownLabel>{t("localing")}</DropDownLabel>
             </DropDownItem>
           ),
           key: "1",
@@ -32,7 +35,7 @@ export const useDropDownApi = () => {
           label: (
             <DropDownItem danger={true}>
               <LogoutOutlined />
-              <DropDownLabel>Log out</DropDownLabel>
+              <DropDownLabel>{t("log_out")}</DropDownLabel>
             </DropDownItem>
           ),
           key: "3",
