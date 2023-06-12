@@ -7,35 +7,37 @@ import {
 } from "@ant-design/icons";
 export const useDropDownApi = () => {
   return {
-    navbarDropDownItems: [
-      {
-        label: (
-          <DropDownItem>
-            <SettingOutlined />
-            <DropDownLabel>Setting</DropDownLabel>
-          </DropDownItem>
-        ),
-        key: "0",
-      },
-      {
-        label: (
-          <DropDownItem>
-            <TranslationOutlined />
-            <DropDownLabel>Change language</DropDownLabel>
-          </DropDownItem>
-        ),
-        key: "1",
-      },
+    navbarDropDownItems: ({ settingClickHandler, localeClickHandler }) => {
+      return [
+        {
+          label: (
+            <DropDownItem onClick={settingClickHandler}>
+              <SettingOutlined />
+              <DropDownLabel>Setting</DropDownLabel>
+            </DropDownItem>
+          ),
+          key: "0",
+        },
+        {
+          label: (
+            <DropDownItem onClick={localeClickHandler}>
+              <TranslationOutlined />
+              <DropDownLabel>Change language</DropDownLabel>
+            </DropDownItem>
+          ),
+          key: "1",
+        },
 
-      {
-        label: (
-          <DropDownItem danger={true}>
-            <LogoutOutlined />
-            <DropDownLabel>Log out</DropDownLabel>
-          </DropDownItem>
-        ),
-        key: "3",
-      },
-    ],
+        {
+          label: (
+            <DropDownItem danger={true}>
+              <LogoutOutlined />
+              <DropDownLabel>Log out</DropDownLabel>
+            </DropDownItem>
+          ),
+          key: "3",
+        },
+      ];
+    },
   };
 };

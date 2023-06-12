@@ -24,6 +24,7 @@ export const Title = styled.div`
   line-height: 77px;
   color: rgb(0, 0, 0);
   margin: 40px;
+  margin-left: ${({ ml }) => ml && ml};
 `;
 export const CardsSection = styled.div`
   display: flex;
