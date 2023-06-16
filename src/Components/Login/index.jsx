@@ -5,6 +5,7 @@ import useNotificationAPI from "../Generic/NotificationAPI";
 import useAxios from "../../hooks/useAxios";
 import { useSignIn } from "react-auth-kit";
 import { useNavigate } from "react-router-dom";
+import useInput from "../Generic/InputAPI";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -12,7 +13,8 @@ const Login = () => {
   const axios = useAxios();
   const signIn = useSignIn();
   const [loading, setLoading] = useState(false);
-  const phoneRef = useRef();
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const { phoneFormatter } = useInput();
   const passwordRef = useRef();
   const keyDetect = (e) => {
     if (loading) return; // stop
@@ -20,7 +22,6 @@ const Login = () => {
   };
   const onAuth = () => {
     const password = passwordRef.current.input.value;
-    const phoneNumber = `+998${phoneRef.current.input.value}`;
 
     if (!password || !phoneNumber) return notifier("empty");
     setLoading(true);
@@ -29,7 +30,7 @@ const Login = () => {
       url: `/user/sign-in`,
       method: "POST",
       body: {
-        phoneNumber,
+        phoneNumber: `+998${phoneNumber.replace(/[^\d]/g, "")}`,
         password,
       },
     })
@@ -55,6 +56,7 @@ const Login = () => {
         setLoading(false);
       });
   };
+
   return (
     <Wrapper>
       <Wrapper.Container>
@@ -66,7 +68,8 @@ const Login = () => {
           addonBefore={"+998"}
           bordered={false}
           placeholder={"Tel Raqam"}
-          ref={phoneRef}
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(phoneFormatter(e.target.value))}
         />
         <Wrapper.InputPassword
           placeholder={"Password"}

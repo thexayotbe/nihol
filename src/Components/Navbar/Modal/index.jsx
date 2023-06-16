@@ -3,15 +3,18 @@ import { Wrapper } from "./style";
 import { Avatar, Modal } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { switchProfileModal } from "../../../redux/modalSlice";
+import { useTranslation } from "react-i18next";
 
 const ModalSettings = () => {
   const { profileModalVisibility } = useSelector((state) => state.modal);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   return (
     <Modal
-      title="Profile"
+      title={t("settings.title")}
       open={profileModalVisibility}
-      okText={"Save"}
+      cancelText={t("cancel")}
+      okText={t("settings.save")}
       okButtonProps={{ disabled: true }}
       onCancel={() => dispatch(switchProfileModal())}>
       <Wrapper>
@@ -19,9 +22,9 @@ const ModalSettings = () => {
           A
         </Avatar>
         <Wrapper.Form>
-          <Wrapper.Label>Name:</Wrapper.Label>
+          <Wrapper.Label>{t("settings.name")}</Wrapper.Label>
           <Wrapper.Input disabled />
-          <Wrapper.Label>Surname:</Wrapper.Label>
+          <Wrapper.Label>{t("settings.surname")}</Wrapper.Label>
           <Wrapper.Input disabled />
         </Wrapper.Form>
       </Wrapper>

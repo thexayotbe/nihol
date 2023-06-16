@@ -36,15 +36,19 @@ const Root = () => {
             <Route key={id} path={path} element={element} />
           ) : (
             <Route key={id} path={path} element={element}>
-              {children.map((childValue) => {
-                return (
-                  <Route
-                    key={childValue.id}
-                    path={childValue.path}
-                    element={childValue.element}
-                  />
-                );
-              })}
+              {children.map(
+                ({ id, path, element, hasChild = false, children }) => {
+                  return !hasChild ? (
+                    <Route key={id} path={path} element={element} />
+                  ) : (
+                    <Route key={id} path={path} element={element}>
+                      {children.map(({ id, path, element }) => {
+                        return <Route key={id} path={path} element={element} />;
+                      })}
+                    </Route>
+                  );
+                }
+              )}
             </Route>
           );
         })}

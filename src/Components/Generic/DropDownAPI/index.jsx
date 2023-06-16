@@ -10,7 +10,11 @@ export const useDropDownApi = () => {
   const { t } = useTranslation();
 
   return {
-    navbarDropDownItems: ({ settingClickHandler, localeClickHandler }) => {
+    navbarDropDownItems: ({
+      settingClickHandler,
+      localeClickHandler,
+      loginModalClickHandler,
+    }) => {
       return [
         {
           label: (
@@ -33,7 +37,7 @@ export const useDropDownApi = () => {
 
         {
           label: (
-            <DropDownItem danger={true}>
+            <DropDownItem danger={true} onClick={loginModalClickHandler}>
               <LogoutOutlined />
               <DropDownLabel>{t("log_out")}</DropDownLabel>
             </DropDownItem>

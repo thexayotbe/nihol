@@ -1,6 +1,4 @@
 import axios from "axios";
-import React from "react";
-
 const useAxios = () => {
   return async ({ url, method = "GET", body, headers }) => {
     return await axios({

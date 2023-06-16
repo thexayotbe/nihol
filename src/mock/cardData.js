@@ -38,20 +38,20 @@ export const homeCardData = [
 export const emptyPlacesCardData = [
   {
     id: 0,
-    title: "Ordinary Rooms",
+    title: "ordinary_rooms",
     path: "/ordinary-rooms",
     icon: ordinary,
   },
   {
     id: 1,
-    title: "Luxury Rooms",
+    title: "luxury_rooms",
     path: "/luxury-rooms",
     icon: luxury,
   },
 
   {
     id: 2,
-    title: "Cottages",
+    title: "cottages",
     path: "/cottages",
     icon: cottage,
   },
@@ -60,20 +60,20 @@ export const emptyPlacesCardData = [
 export const ordinaryRoomsCardData = [
   {
     id: 0,
-    title: "2 Building",
+    title: "2",
     path: "/2",
     icon: buildingFlat,
   },
   {
     id: 1,
-    title: "4 Building",
+    title: "4",
     path: "/4",
     icon: buildingFlat,
   },
 
   {
     id: 2,
-    title: "6 Building",
+    title: "6",
     path: "/6",
     icon: buildingFlat,
   },
@@ -82,13 +82,13 @@ export const ordinaryRoomsCardData = [
 export const luxuryRoomsCardData = [
   {
     id: 0,
-    title: "3 Building",
+    title: "3",
     path: "/3",
     icon: buildingFlat,
   },
   {
     id: 1,
-    title: "5 Building",
+    title: "5",
     path: "/5",
     icon: buildingFlat,
   },

@@ -2,11 +2,13 @@ import AllUsers from "../Components/AllUsers";
 import Cottages from "../Components/BuildingTypes/Cottages";
 import LuxuryRooms from "../Components/BuildingTypes/LuxuryRooms";
 import OrdinaryRooms from "../Components/BuildingTypes/OrdinaryRooms";
-import EmptyPlaces from "../Components/EmptyPlaces";
+import EmptyPlaces from "../Components/BuildingTypes";
 import HalfTime from "../Components/HalfTime";
 import Home from "../Components/Home";
 import Report from "../Components/Report";
 import TimeUp from "../Components/TimeUp";
+import SecondBuilding from "../Components/Buildings/SecondBuilding";
+import FourtBuilding from "../Components/Buildings/FourthBuilding";
 
 export const paths = [
   {
@@ -35,7 +37,24 @@ export const paths = [
     element: <EmptyPlaces />,
     hasChild: true,
     children: [
-      { id: "4-1", path: "ordinary-rooms", element: <OrdinaryRooms /> },
+      {
+        id: "4-1",
+        path: "ordinary-rooms",
+        element: <OrdinaryRooms />,
+        hasChild: true,
+        children: [
+          {
+            id: "4-1-1",
+            path: "2",
+            element: <SecondBuilding />,
+          },
+          {
+            id: "4-1-2",
+            path: "4",
+            element: <FourtBuilding />,
+          },
+        ],
+      },
       { id: "4-2", path: "luxury-rooms", element: <LuxuryRooms /> },
       { id: "4-3", path: "cottages", element: <Cottages /> },
     ],

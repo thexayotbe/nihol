@@ -5,8 +5,10 @@ import { switchLocaleModal } from "../../../redux/modalSlice";
 import useLocalingAPI from "../../Generic/LocalingAPI";
 import { changelang } from "../../../redux/localeSlice";
 import i18 from "i18next";
+import { useTranslation } from "react-i18next";
 const LocalingModal = () => {
   const { localingOptions } = useLocalingAPI();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { localeModalVisibility } = useSelector((state) => state.modal);
   const { lang } = useSelector((state) => state.locale);
@@ -16,8 +18,8 @@ const LocalingModal = () => {
   };
   return (
     <Modal
-      title="Change Language"
-      okText="Edit"
+      title={t("localingTitle")}
+      okText={t("edit")}
       open={localeModalVisibility}
       onOk={alterLanguage}
       onCancel={() => dispatch(switchLocaleModal())}>
