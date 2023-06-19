@@ -7,6 +7,8 @@ import ru_RU from "antd/locale/ru_RU";
 import { AuthProvider } from "react-auth-kit";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import ModalInfo from "../../Components/Generic/Modal";
+import AddModal from "../../Components/Generic/AddModal";
 const Wrapper = ({ children }) => {
   const queryClient = new QueryClient();
   return (
@@ -14,6 +16,8 @@ const Wrapper = ({ children }) => {
       <BrowserRouter>
         <QueryClientProvider client={queryClient}>
           <ReactQueryDevtools />
+          <ModalInfo />
+          <AddModal />
           <AuthProvider
             authType="cookie"
             authName="_auth"

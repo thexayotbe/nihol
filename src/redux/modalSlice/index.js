@@ -6,6 +6,8 @@ const modalSlice = createSlice({
     profileModalVisibility: false,
     localeModalVisibility: false,
     logOutModalVisibility: false,
+    addModalVisibility: false,
+    emptyRoomModalVisibility: false,
   },
   reducers: {
     switchProfileModal(state) {
@@ -17,9 +19,20 @@ const modalSlice = createSlice({
     switchLogoutModal(state) {
       state.logOutModalVisibility = !state.logOutModalVisibility;
     },
+    switchAddModalVisibility(state) {
+      state.addModalVisibility = !state.addModalVisibility;
+    },
+    switchEmptyModalVisibility(state) {
+      state.emptyRoomModalVisibility = !state.emptyRoomModalVisibility;
+    },
   },
 });
 
 export default modalSlice.reducer;
-export const { switchProfileModal, switchLocaleModal, switchLogoutModal } =
-  modalSlice.actions;
+export const {
+  switchProfileModal,
+  switchLocaleModal,
+  switchLogoutModal,
+  switchAddModalVisibility,
+  switchEmptyModalVisibility,
+} = modalSlice.actions;
