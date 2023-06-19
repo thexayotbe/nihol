@@ -99,3 +99,15 @@ MainCardWrapper.Room = styled(Tag)`
   height: 40px;
   border-radius: 12px;
 `;
+MainCardWrapper.InfoRoom = styled(Tag)`
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  top: -8px;
+  right: -15px;
+`;

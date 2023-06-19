@@ -9,6 +9,8 @@ import Report from "../Components/Report";
 import TimeUp from "../Components/TimeUp";
 import SecondBuilding from "../Components/Buildings/SecondBuilding";
 import FourtBuilding from "../Components/Buildings/FourthBuilding";
+import SixthBuilding from "../Components/Buildings/SixthBuilding";
+import ThirdBuilding from "../Components/Buildings/ThirdBuilding";
 
 export const paths = [
   {
@@ -53,9 +55,26 @@ export const paths = [
             path: "4",
             element: <FourtBuilding />,
           },
+          {
+            id: "4-1-3",
+            path: "6",
+            element: <SixthBuilding />,
+          },
         ],
       },
-      { id: "4-2", path: "luxury-rooms", element: <LuxuryRooms /> },
+      {
+        id: "4-2",
+        path: "luxury-rooms",
+        element: <LuxuryRooms />,
+        hasChild: true,
+        children: [
+          {
+            id: "4-2-1",
+            path: "3",
+            element: <ThirdBuilding />,
+          },
+        ],
+      },
       { id: "4-3", path: "cottages", element: <Cottages /> },
     ],
   },

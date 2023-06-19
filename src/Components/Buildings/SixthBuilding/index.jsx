@@ -8,13 +8,13 @@ import useQueryHandler from "../../../hooks/useQuery";
 const SecondBuilding = () => {
   const { t } = useTranslation();
   const { isLoading } = useQueryHandler({
-    queryKey: "accomodation/2",
-    url: "/accomodation/2/room",
+    queryKey: "accomodation/6",
+    url: "/accomodation/6/room",
   });
 
   return (
     <Content>
-      <TitleHandler title={`2 ${t("building")}`} />
+      <TitleHandler title={`6 ${t("building")}`} />
       {isLoading ? <Spin /> : <Maping />}
     </Content>
   );
