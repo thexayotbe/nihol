@@ -1,19 +1,26 @@
-import React, { useState } from "react";
-import { Wrapper } from "./style";
-import useObservingApi from "../../../../Generic/ObservingApi";
-
+import { Wrapper } from "../style";
+import useObservingApi from "../../../../Generic/UserModalApi";
+import { observingMapInfo } from "../../../../../mock/userModal";
+import { Button } from "antd";
 const Observing = () => {
-  const { formatData, mapInfo } = useObservingApi();
+  const { formatData } = useObservingApi();
   return (
     <Wrapper>
-      {mapInfo.map((value, index) => {
+      {observingMapInfo.map((value, index) => {
         return (
-          <Wrapper.Item>
+          <Wrapper.Item key={index}>
             <Wrapper.Title>{value[1]}</Wrapper.Title>
             <Wrapper.Info>{formatData(value[0])}</Wrapper.Info>
           </Wrapper.Item>
         );
       })}
+      <Wrapper.Buttons>
+        <Button>Cancel</Button>
+        <Button type="primary">Move</Button>
+        <Button type="primary" danger>
+          Delete
+        </Button>
+      </Wrapper.Buttons>
     </Wrapper>
   );
 };

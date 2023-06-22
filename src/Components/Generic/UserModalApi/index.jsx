@@ -1,9 +1,12 @@
+import { DatePicker, Input } from "antd";
 import dayjs from "dayjs";
-import React from "react";
 import { useSelector } from "react-redux";
 
 const useObservingApi = () => {
   const { selectedUser } = useSelector((state) => state.user);
+  const { userData } = selectedUser;
+  const { RangePicker } = DatePicker;
+
   const formatData = (value) => {
     const { userData } = selectedUser;
     if (value === "birthDate" || value === "arrivalDate" || value === "endDate")
@@ -18,25 +21,27 @@ const useObservingApi = () => {
       return userData[value].replace("b", "B");
     else return userData[value];
   };
-  const mapInfo = [
-    ["fullName", "Full Name:"],
-    ["birthDate", "Birth date:"],
-    ["passportID", "Passport Number:"],
-    ["phoneNumber", "Phone Number:"],
-    ["address", "Address:"],
-    ["arrivalDate", "Came date:"],
-    ["endDate", "End date:"],
-    ["dayLeft", "Remaring Date:"],
-    ["dayCost", "Daily Price:"],
-    ["total", "Total Price:"],
-    ["hasVoucher", "Voucher status:"],
-    ["paidByCash", "Paid by Cash:"],
-    ["paidByPlasticCard", "Paid by Card:"],
-    ["paymentDifference", "Payment difference:"],
-    ["buildingNumber", "Building Number:"],
-    ["roomNumber", "Room Number:"],
-  ];
-  return { formatData, mapInfo };
+
+  const filterInput = (name) => {
+    if (name === "birthDate") return <DatePicker />;
+    else if (name === "dateRange") return <RangePicker />;
+    else if (name === "phoneNumber") return <Input addonBefore="+998" />;
+    else return <Input />;
+  };
+
+  const editingInitialValues = {
+    fullName: userData.fullName,
+    birthDate: dayjs(Number(userData.birthDate)),
+    passportID: userData.passportID,
+    phoneNumber: userData.phoneNumber,
+    address: userData.address,
+    dateRange: [dayjs(userData.arrivalDate), dayjs(userData.endDate)],
+    dailyPrice: userData.dayCost,
+    payCash: userData.paidByCash,
+    payCard: userData.paidByPlasticCard,
+  };
+
+  return { formatData, editingInitialValues, filterInput };
 };
 
 export default useObservingApi;

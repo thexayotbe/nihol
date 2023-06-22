@@ -1,9 +1,6 @@
 import { Modal, Segmented } from "antd";
 import React, { useState } from "react";
-import {
-  switchEmptyModalVisibility,
-  switchUserModalVisibility,
-} from "../../../../redux/modalSlice";
+import { switchUserModalVisibility } from "../../../../redux/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Observing from "./Observing";
 import Booking from "./Booking";
@@ -16,7 +13,8 @@ const UserModal = () => {
     <Modal
       open={userModalVisibility}
       title="Information about user"
-      onCancel={() => dispatch(switchEmptyModalVisibility())}>
+      onCancel={() => dispatch(switchUserModalVisibility())}
+      footer={false}>
       <Segmented
         block
         options={["Observing", "Booking", "Edit"]}
