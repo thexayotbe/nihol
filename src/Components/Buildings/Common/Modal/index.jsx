@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   switchAddModalVisibility,
   switchEmptyModalVisibility,
-} from "../../../redux/modalSlice";
+} from "../../../../redux/modalSlice";
 
 const ModalInfo = () => {
   const { emptyRoomModalVisibility } = useSelector((state) => state.modal);
@@ -12,7 +12,6 @@ const ModalInfo = () => {
     dispatch(switchAddModalVisibility());
     dispatch(switchEmptyModalVisibility());
   };
-
   const warning = () => {
     Modal.warning({
       onOk: () => addModalHandler(),
@@ -24,7 +23,6 @@ const ModalInfo = () => {
         "This place is empty. Click the «Add» button to add a new user. Or click to the «Book» button to book this place.",
     });
   };
-  console.log(emptyRoomModalVisibility);
 
   return emptyRoomModalVisibility && warning();
 };

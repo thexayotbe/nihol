@@ -8,6 +8,7 @@ const modalSlice = createSlice({
     logOutModalVisibility: false,
     addModalVisibility: false,
     emptyRoomModalVisibility: false,
+    userModalVisibility: false,
   },
   reducers: {
     switchProfileModal(state) {
@@ -25,6 +26,9 @@ const modalSlice = createSlice({
     switchEmptyModalVisibility(state) {
       state.emptyRoomModalVisibility = !state.emptyRoomModalVisibility;
     },
+    switchUserModalVisibility(state) {
+      state.userModalVisibility = !state.userModalVisibility;
+    },
   },
 });
 
@@ -35,4 +39,5 @@ export const {
   switchLogoutModal,
   switchAddModalVisibility,
   switchEmptyModalVisibility,
+  switchUserModalVisibility,
 } = modalSlice.actions;

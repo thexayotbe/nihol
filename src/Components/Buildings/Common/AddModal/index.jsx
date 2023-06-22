@@ -1,10 +1,9 @@
 import { Modal, Segmented } from "antd";
 import { FormWrapper } from "./style";
 import { useState } from "react";
-import { addModalData } from "../../../mock/addModal";
-import { formToJSON } from "axios";
+import { addModalData } from "../../../../mock/addModal";
 import { useDispatch, useSelector } from "react-redux";
-import { switchAddModalVisibility } from "../../../redux/modalSlice";
+import { switchAddModalVisibility } from "../../../../redux/modalSlice";
 const AddModal = () => {
   const { addModalVisibility } = useSelector((state) => state.modal);
   const [type, setType] = useState("Ordinary");

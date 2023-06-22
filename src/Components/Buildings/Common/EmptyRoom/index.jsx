@@ -1,4 +1,4 @@
-import { MainCardWrapper } from "../../../../Generic/styles";
+import { MainCardWrapper } from "../../../Generic/styles";
 
 const EmptyRoom = ({ onClick }) => {
   return <MainCardWrapper.Room color="green" onClick={onClick} />;
