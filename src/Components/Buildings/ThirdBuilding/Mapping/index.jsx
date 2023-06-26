@@ -1,8 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { MainCardWrapper } from "../../../Generic/styles";
 import { useQueryClient } from "react-query";
-import { switchEmptyModalVisibility } from "../../../../redux/modalSlice";
-import { useDispatch } from "react-redux";
 import Room from "../../Common/Room";
 import EmptyRoom from "../../Common/EmptyRoom";
 import BookedRoom from "../../Common/BookedRoom";
@@ -23,8 +21,6 @@ const Maping = () => {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
   const data = queryClient.getQueryData("accomodation/3");
-  const dispatch = useDispatch();
-  const modalHandler = () => dispatch(switchEmptyModalVisibility());
   return (
     <MainCardWrapper>
       <MainCardWrapper.CardWrapper>
@@ -40,7 +36,6 @@ const Maping = () => {
                     return typeChecker({
                       clienteValue,
                       roomValue,
-                      modalHandler,
                     });
                   })}
                 </MainCardWrapper.ClientsWrapper>

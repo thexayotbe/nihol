@@ -1,8 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { MainCardWrapper } from "../../../Generic/styles";
 import { useQueryClient } from "react-query";
-import { useDispatch } from "react-redux";
-import { switchEmptyModalVisibility } from "../../../../redux/modalSlice";
 import Room from "../../Common/Room";
 import EmptyRoom from "../../Common/EmptyRoom";
 import BookedRoom from "../../Common/BookedRoom";
@@ -16,7 +14,10 @@ const typeChecker = ({ clienteValue, roomValue, modalHandler }) => {
   ) : !clienteValue.isBooked ? (
     <EmptyRoom key={clienteValue.clienteID} onClick={() => modalHandler()} />
   ) : (
-    <BookedRoom key={clienteValue.clienteID} />
+    <BookedRoom
+      key={clienteValue.clienteID}
+      values={{ clienteValue, roomValue, roomID: 2 }}
+    />
   );
 };
 
@@ -24,8 +25,6 @@ const Maping = () => {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
   const data = queryClient.getQueryData("accomodation/2");
-  const dispatch = useDispatch();
-  const modalHandler = () => dispatch(switchEmptyModalVisibility());
   return (
     <MainCardWrapper>
       <MainCardWrapper.CardWrapper>
@@ -38,7 +37,7 @@ const Maping = () => {
                 </MainCardWrapper.Title>
                 <MainCardWrapper.ClientsWrapper>
                   {roomValue.cliente.map((clienteValue) =>
-                    typeChecker({ clienteValue, roomValue, modalHandler })
+                    typeChecker({ clienteValue, roomValue })
                   )}
                 </MainCardWrapper.ClientsWrapper>
               </MainCardWrapper.RoomWrapper>

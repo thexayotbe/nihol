@@ -35,7 +35,7 @@ const useObservingApi = () => {
     passportID: userData.passportID,
     phoneNumber: userData.phoneNumber,
     address: userData.address,
-    dateRange: [dayjs(userData.arrivalDate), dayjs(userData.endDate)],
+    dateRange: [dayjs(+userData.arrivalDate), dayjs(+userData.endDate)],
     dailyPrice: userData.dayCost,
     payCash: userData.paidByCash,
     payCard: userData.paidByPlasticCard,

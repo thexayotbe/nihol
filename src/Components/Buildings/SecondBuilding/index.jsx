@@ -5,6 +5,7 @@ import Maping from "./Mapping";
 import { Spin } from "antd";
 import useQueryHandler from "../../../hooks/useQuery";
 import UserModal from "../Common/UserModal";
+import BookedUserAddModal from "../Common/actions/adding/BookedUser";
 const SecondBuilding = () => {
   const { t } = useTranslation();
   const { isLoading } = useQueryHandler({
@@ -15,6 +16,7 @@ const SecondBuilding = () => {
   return (
     <Content>
       <UserModal />
+      <BookedUserAddModal />
       <TitleHandler title={`2 ${t("building")}`} />
       {isLoading ? <Spin /> : <Maping />}
     </Content>

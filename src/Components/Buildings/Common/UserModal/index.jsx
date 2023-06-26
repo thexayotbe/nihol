@@ -5,10 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import Observing from "./Observing";
 import Booking from "./Booking";
 import Editing from "./Editing";
+import UserEmptyUI from "./EmptyUI/UserEmptyUI";
 const UserModal = () => {
-  const [segmentedOption, setSegmentedOption] = useState("Observing");
+  const { selectedUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const [segmentedOption, setSegmentedOption] = useState("Observing");
   const { userModalVisibility } = useSelector((state) => state.modal);
+  console.log(selectedUser);
   return (
     <Modal
       open={userModalVisibility}
@@ -21,11 +24,17 @@ const UserModal = () => {
         onChange={(e) => setSegmentedOption(e)}
       />
       {segmentedOption === "Observing" ? (
-        <Observing />
+        selectedUser?.clienteValue?.userID ? (
+          <Observing />
+        ) : (
+          <UserEmptyUI />
+        )
       ) : segmentedOption === "Booking" ? (
         <Booking />
-      ) : (
+      ) : selectedUser?.clienteValue?.userID ? (
         <Editing />
+      ) : (
+        <UserEmptyUI />
       )}
     </Modal>
   );

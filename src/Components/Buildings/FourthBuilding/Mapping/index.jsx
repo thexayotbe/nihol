@@ -4,8 +4,6 @@ import { useQueryClient } from "react-query";
 import Room from "../../Common/Room";
 import EmptyRoom from "../../Common/EmptyRoom";
 import BookedRoom from "../../Common/BookedRoom";
-import { useDispatch } from "react-redux";
-import { switchEmptyModalVisibility } from "../../../../redux/modalSlice";
 const typeChecker = ({ clienteValue, roomValue, modalHandler }) => {
   return clienteValue.userID ||
     (clienteValue.userID && clienteValue.isBooked) ? (
@@ -23,8 +21,6 @@ const Maping = () => {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
   const data = queryClient.getQueryData("accomodation/4");
-  const dispatch = useDispatch();
-  const modalHandler = () => dispatch(switchEmptyModalVisibility());
   return (
     <MainCardWrapper>
       <MainCardWrapper.CardWrapper>
@@ -40,7 +36,6 @@ const Maping = () => {
                     return typeChecker({
                       clienteValue,
                       roomValue,
-                      modalHandler,
                     });
                   })}
                 </MainCardWrapper.ClientsWrapper>

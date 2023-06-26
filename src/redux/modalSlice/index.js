@@ -7,8 +7,8 @@ const modalSlice = createSlice({
     localeModalVisibility: false,
     logOutModalVisibility: false,
     addModalVisibility: false,
-    emptyRoomModalVisibility: false,
     userModalVisibility: false,
+    bookedUserModalVisibility: false,
   },
   reducers: {
     switchProfileModal(state) {
@@ -23,11 +23,12 @@ const modalSlice = createSlice({
     switchAddModalVisibility(state) {
       state.addModalVisibility = !state.addModalVisibility;
     },
-    switchEmptyModalVisibility(state) {
-      state.emptyRoomModalVisibility = !state.emptyRoomModalVisibility;
-    },
+
     switchUserModalVisibility(state) {
       state.userModalVisibility = !state.userModalVisibility;
+    },
+    switchBookedModalVisibility(state) {
+      state.bookedUserModalVisibility = !state.bookedUserModalVisibility;
     },
   },
 });
@@ -38,6 +39,6 @@ export const {
   switchLocaleModal,
   switchLogoutModal,
   switchAddModalVisibility,
-  switchEmptyModalVisibility,
   switchUserModalVisibility,
+  switchBookedModalVisibility,
 } = modalSlice.actions;

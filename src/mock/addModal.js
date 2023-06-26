@@ -72,3 +72,45 @@ export const addModalData = [
     ),
   },
 ];
+
+export const bookUserData = [
+  { id: "0", name: "fullName", label: "Full Name", element: <Input /> },
+
+  { id: "3", name: "address", label: "Address", element: <Input /> },
+  {
+    id: "4",
+    name: "phoneNumber",
+    label: "Phone Number",
+    element: <Input addonBefore="+998" />,
+  },
+  { id: "5", name: "dataRange", label: "Date Range", element: <RangePicker /> },
+  {
+    id: "6",
+    name: "prePaid",
+    label: "Prepaid",
+    element: <Input />,
+  },
+  {
+    id: "11",
+    name: "buildingNumber",
+    label: "Building Number",
+    element: (
+      <Select defaultValue={"room2"} allowClear disabled>
+        <Option value="room2">Building 2</Option>
+        <Option value="room3">Building 3</Option>
+        <Option value="room4">Building 4</Option>
+      </Select>
+    ),
+  },
+  {
+    id: "12",
+    name: "roomNumber",
+    label: "Room Number",
+    element: (
+      <Select defaultValue={"1"} allowClear disabled>
+        <Option value="1">1</Option>
+        <Option value="2">2</Option>
+      </Select>
+    ),
+  },
+];
