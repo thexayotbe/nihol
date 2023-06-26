@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   margin-top: 30px;
 `;
+
 Wrapper.Item = styled.div`
   width: 100%;
   display: flex;
@@ -27,4 +28,8 @@ Wrapper.Buttons = styled.div`
   justify-content: flex-end;
   gap: 28px;
   margin: 20px 0;
+`;
+export const BookingSection = styled.div`
+  padding: 10px 0;
+  height: 500px;
 `;

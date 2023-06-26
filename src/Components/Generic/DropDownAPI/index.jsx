@@ -4,11 +4,14 @@ import {
   SettingOutlined,
   TranslationOutlined,
   LogoutOutlined,
+  ContactsOutlined,
+  FileSearchOutlined,
+  EditOutlined,
+  DeleteOutlined,
 } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 export const useDropDownApi = () => {
   const { t } = useTranslation();
-
   return {
     navbarDropDownItems: ({
       settingClickHandler,
@@ -40,6 +43,42 @@ export const useDropDownApi = () => {
             <DropDownItem danger={true} onClick={loginModalClickHandler}>
               <LogoutOutlined />
               <DropDownLabel>{t("log_out")}</DropDownLabel>
+            </DropDownItem>
+          ),
+          key: "3",
+        },
+      ];
+    },
+    bookingUserModalItems: () => {
+      return [
+        {
+          label: (
+            <DropDownItem>
+              <ContactsOutlined /> <DropDownLabel>Activate</DropDownLabel>
+            </DropDownItem>
+          ),
+          key: "0",
+        },
+        {
+          label: (
+            <DropDownItem>
+              <FileSearchOutlined /> <DropDownLabel>Detailed</DropDownLabel>
+            </DropDownItem>
+          ),
+          key: "1",
+        },
+        {
+          label: (
+            <DropDownItem>
+              <EditOutlined /> <DropDownLabel>Edit</DropDownLabel>
+            </DropDownItem>
+          ),
+          key: "1",
+        },
+        {
+          label: (
+            <DropDownItem danger={true}>
+              <DeleteOutlined /> <DropDownLabel>Delete</DropDownLabel>
             </DropDownItem>
           ),
           key: "3",
