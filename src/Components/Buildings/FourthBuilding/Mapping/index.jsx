@@ -14,7 +14,10 @@ const typeChecker = ({ clienteValue, roomValue, modalHandler }) => {
   ) : !clienteValue.isBooked ? (
     <EmptyRoom key={clienteValue.clienteID} onClick={() => modalHandler()} />
   ) : (
-    <BookedRoom key={clienteValue.clienteID} />
+    <BookedRoom
+      key={clienteValue.clienteID}
+      values={{ clienteValue, roomValue, roomID: 2 }}
+    />
   );
 };
 const Maping = () => {
